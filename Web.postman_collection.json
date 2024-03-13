@@ -1,0 +1,5142 @@
+{
+	"info": {
+		"_postman_id": "d7597976-1e1a-445b-8d2f-7edb2933eb1a",
+		"name": "Web",
+		"description": "Run migration and seeding first to check these apis with\n\n**php artisan migrate:refresh --force --seed**",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14040524"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"    const tkn = pm.response.json().token\r",
+									"    pm.collectionVariables.set(\"auth-token\", tkn)\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"admin123@email.com\",\r\n    \"password\": \"Admin123\"\r\n    // \"email\": \"hane.mertie@example.com\",\r\n    // \"password\": \"User123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{web-url}}/api/auth/login",
+							"host": [
+								"{{web-url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"admin123@email.com\",\r\n    \"password\": \"Admin123\"\r\n    // \"email\": \"altenwerth.kaia@example.com\",\r\n    // \"password\": \"User123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "/api/auth/login",
+									"path": [
+										"api",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 09:40:08 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 09:40:08 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "tdtrec_session=gyrjZ2xmkVS4Pe3Q3EY6c2LWp9Q65AvhmQyjapYZ; expires=Fri, 08 Mar 2024 11:40:08 GMT; Max-Age=7200; path=/; domain=.127.0.0.1; httponly; samesite=lax"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"Logged in successfully\",\n    \"token\": \"oxDWs7tiJhqHjBB5p470qhRiI45yjKjpKjnVY4dYd5b47b52\"\n}"
+						},
+						{
+							"name": "success user log in",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    // \"email\": \"admin123@email.com\",\r\n    // \"password\": \"Admin123\"\r\n    \"email\": \"hane.mertie@example.com\",\r\n    \"password\": \"User123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{web-url}}/api/auth/login",
+									"host": [
+										"{{web-url}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 09:46:02 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 09:46:02 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "tdtrec_session=XmsCB1IivVE81MQtE8AvPdOGCatHzuinaj7kWuq7; expires=Fri, 08 Mar 2024 11:46:02 GMT; Max-Age=7200; path=/; domain=.127.0.0.1; httponly; samesite=lax"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"Logged in successfully\",\n    \"token\": \"sEqVDysQAkWcRudvOEOyR1488F2NcWiMKklOOH0Pcaae475d\"\n}"
+						},
+						{
+							"name": "failed",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"admin123@email.com\",\r\n    \"password\": \"Admin123a\"\r\n    // \"email\": \"altenwerth.kaia@example.com\",\r\n    // \"password\": \"User123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{web-url}}/api/auth/login",
+									"host": [
+										"{{web-url}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 09:40:19 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 09:40:19 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "57"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "tdtrec_session=gyrjZ2xmkVS4Pe3Q3EY6c2LWp9Q65AvhmQyjapYZ; expires=Fri, 08 Mar 2024 11:40:19 GMT; Max-Age=7200; path=/; domain=.127.0.0.1; httponly; samesite=lax"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": false,\n    \"message\": \"email or password wrong\"\n}"
+						}
+					]
+				},
+				{
+					"name": "register",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"bigoof\",\r\n    \"email\": \"bigoof@email.com\",\r\n    \"password\": \"bigoof123\",\r\n    \"type\": \"Admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{web-url}}/api/register",
+							"host": [
+								"{{web-url}}"
+							],
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"bigoof\",\r\n    \"email\": \"bigoof@email.com\",\r\n    \"password\": \"bigoof123\",\r\n    \"type\": \"Admin\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "/api/register",
+									"path": [
+										"api",
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 09:40:32 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 09:40:32 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "tdtrec_session=gyrjZ2xmkVS4Pe3Q3EY6c2LWp9Q65AvhmQyjapYZ; expires=Fri, 08 Mar 2024 11:40:32 GMT; Max-Age=7200; path=/; domain=.127.0.0.1; httponly; samesite=lax"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"Account created successfully\"\n}"
+						},
+						{
+							"name": "fail",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"bigoof\",\r\n    \"email\": \"bigoof@email.com\",\r\n    \"password\": \"bigoof123\",\r\n    \"type\": \"Admin\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{web-url}}/api/register",
+									"host": [
+										"{{web-url}}"
+									],
+									"path": [
+										"api",
+										"register"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 09:40:46 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 09:40:46 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "tdtrec_session=gyrjZ2xmkVS4Pe3Q3EY6c2LWp9Q65AvhmQyjapYZ; expires=Fri, 08 Mar 2024 11:40:46 GMT; Max-Age=7200; path=/; domain=.127.0.0.1; httponly; samesite=lax"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": false,\n    \"message\": \"validation_error\",\n    \"errors\": {\n        \"email\": [\n            \"The email has already been taken.\"\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "logout",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{auth-token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{web-url}}/api/logout",
+							"host": [
+								"{{web-url}}"
+							],
+							"path": [
+								"api",
+								"logout"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "/api/logout",
+									"path": [
+										"api",
+										"logout"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 09:40:54 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 09:40:54 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "57"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "tdtrec_session=gyrjZ2xmkVS4Pe3Q3EY6c2LWp9Q65AvhmQyjapYZ; expires=Fri, 08 Mar 2024 11:40:54 GMT; Max-Age=7200; path=/; domain=.127.0.0.1; httponly; samesite=lax"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": \"Logout successfully.\"\n}"
+						},
+						{
+							"name": "unauthenticated",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{web-url}}/api/logout",
+									"host": [
+										"{{web-url}}"
+									],
+									"path": [
+										"api",
+										"logout"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 13 Mar 2024 10:39:35 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 13 Mar 2024 10:39:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "tdtrec_session=8ccEuG1wbrhumourFIecwUx0APhXZssK5D0oFJ2t; expires=Wed, 13 Mar 2024 12:39:35 GMT; Max-Age=7200; path=/; domain=.127.0.0.1; httponly; samesite=lax"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Unauthenticated.\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Profile",
+			"item": [
+				{
+					"name": "user",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{auth-token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Origin",
+								"value": "{{origin}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{web-url}}/api/user",
+							"host": [
+								"{{web-url}}"
+							],
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Origin",
+										"value": "",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "/api/user",
+									"path": [
+										"api",
+										"user"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 09:41:15 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 09:41:15 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "54"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=eyJpdiI6IjVLOG53Rk4zWkNQZmtrckFxaWhrNHc9PSIsInZhbHVlIjoiN1VRWnBadndYVUt3bDJWajcxUXRkZ0NjQURiZFJJQ3BHQnZkdlljZ3E0ZWM3b0FyTGplQzFXajBvU3YxNWZLRUVOeVIxTFVWakF1VWxJdVNYVXpHdlkxQnREWDJhWVBSM3dFYVZHdGExN2pua21ZUU0wMjZFVElIY1BhTENGUnUiLCJtYWMiOiJiMmQ1NjgwNWJhODk1ZjQxM2MzZDQxNGRkN2QzZDkzMDJiYjk3NGVhYjkxNmIzYjYyZDYzNzQ1MGRjZTNmMzg0IiwidGFnIjoiIn0%3D; expires=Fri, 08 Mar 2024 11:41:15 GMT; Max-Age=7200; path=/; domain=.127.0.0.1; samesite=lax"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "tdtrec_session=tW0V6xdkD0wFtMZH5qYP0w4PnflGl4CbwJjT3v5Y; expires=Fri, 08 Mar 2024 11:41:15 GMT; Max-Age=7200; path=/; domain=.127.0.0.1; httponly; samesite=lax"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "tW0V6xdkD0wFtMZH5qYP0w4PnflGl4CbwJjT3v5Y=eyJpdiI6IktpWEZHRUZvVnB6Zm42dVNZa3l4eEE9PSIsInZhbHVlIjoiMFl6ckxpTTEwbzdVQWMvV1dtTkw0SmYwY3dZVW9UaFJ1TC9IRmlVdkRHVlNKcTRBanpRZmk1T1RWWk1ybUJqUlArWFBWMDAzVWJBRkRTZWt0blZpblhSeGNWYTZZUUF4TW5hWmFuTVp0cWwremhoSU9UNHpTb0R2a0hDeGZNVEh1aC82MENMeDdDSXJzS0FpdmZESTJ1RkJSVUFwem5GQnkrT2ZTS0p3ZXdMN3JhNG0vdVZ1Mjl4UjJGRE45VUdWRTY1WXR5a3FXNW1sM2RzdnNEbXRVb0NoMHNoYU9yb2Vwam13LytOS0VFL3g0enRxalprbzZ4OE9EU1dnbWRoVEJhSXdMUmxmTDQ1RnlIRnZneDNvOWlrcHo3WExMQkRRL2U4NlAwaklRR2xtNGNpTFZ6N3JpcGxFMmQ2VERoL2JuNk9HUjQxc0NJY1g5REh0eEMvbFUzQXJSWkpzZXhvbUxwWlJuQjJWeER2VFNXSlRweVlzTjQ1aHFUeVc0Z0I4TDBxMDhzczNUYk9kUnI4M21WaU0rclJ1MnUzTmtHZUhIUi8zVmdNSzBoRU9mSHIvcEtNR3ZxUks5VzEzL0tLaFduMUZhajllOXhwbUk2M0dVWURTT2E5RDdQZTFJbHB2MWpWRXdWREVxS1BnemwrMHY4VXY3Z0xPamdVcjFjaW94bGE0TkFsTlluQ29VV0Y3b3NvUkcyYlQzb1p4VDFDZnRzRlVGK2NPNGNCQldoOEE1QWdPZWlGNnNtTi9vQ0NYL2RaREZabFRqOHpLbkpvTUVJUTFGZ0d0NWEzbnNHWFR6YTZtbkZZWk9BSWpXRS9qbDl4YnBtYkZlR1V1cm9wRk9LTlRZUlVUaXJ0c29aSDVoZnlhbnZPQTdDOWtYMmt4U0xlSmxYeXVEejN1Rlk2Q3lpR09YZlBFakw4YmFxbE1DaGI2UjlQa044bERZMDhZNThvbUd1Z29oZVRSeHpFUFpGK1dUTkcwYlQ0c3lDcU9SV1VqUTNETTZBT3oySWRUT2FZeTlGblJ6R2txSHY3YnI2QzdOa0RsZUtVR3dFUVh1VU1yWmFjelJQeWRYYlZDL1pBd0NMZHVPNUFqdlBwQiIsIm1hYyI6IjVkYTQwNzFiOGM2MjA5MTEzYzU5ZWQzNmFjZTNhYzQwNWI1MDMyODZmYWYzNjQwYTJmMzAwNWFlNzc5MTg5YzkiLCJ0YWciOiIifQ%3D%3D; expires=Fri, 08 Mar 2024 11:41:15 GMT; Max-Age=7200; path=/; domain=.127.0.0.1; httponly; samesite=lax"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"name\": \"Admin Admin\",\n    \"email\": \"admin123@email.com\",\n    \"email_verified_at\": null,\n    \"created_at\": \"2024-03-08T09:39:56.000000Z\",\n    \"updated_at\": \"2024-03-08T09:39:56.000000Z\",\n    \"type\": \"Admin\"\n}"
+						},
+						{
+							"name": "unauthenticated",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Origin",
+										"value": "{{origin}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{web-url}}/api/user",
+									"host": [
+										"{{web-url}}"
+									],
+									"path": [
+										"api",
+										"user"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 09:41:28 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 09:41:28 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XSRF-TOKEN=eyJpdiI6IjlHT0tnSjBIY1MyLytTYlNDZTYycVE9PSIsInZhbHVlIjoiSmF2cjNOUTlUcVZyRzZBb0l2MGxlQ0hEVmFIQ3NvaHFuMUNIWjNhY2NWSVFsZVFyYVd2NEdDLzZwUE1NTW5VZ2lSY1V4UkllOVpwVlFzWTh1UElOQWk0NjNIUVM2Q0NWKys4eUNoNVBOb05IdnppcXJKVDN0UnZYS1JBRU81UzIiLCJtYWMiOiI3ZmViYjJlMjRmODBjZTMzNzFkYjdjNjhmY2FiNzE1OGRkMGUwNWI3YzU0NWY5YjYxOTU0ZWQ4YmUyODViNmU3IiwidGFnIjoiIn0%3D; expires=Fri, 08 Mar 2024 11:41:28 GMT; Max-Age=7200; path=/; domain=.127.0.0.1; samesite=lax"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "tdtrec_session=yp9QHHv1lvkYWBn54J1UJ44jDLaLxnJvkdIyE2iC; expires=Fri, 08 Mar 2024 11:41:28 GMT; Max-Age=7200; path=/; domain=.127.0.0.1; httponly; samesite=lax"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "yp9QHHv1lvkYWBn54J1UJ44jDLaLxnJvkdIyE2iC=eyJpdiI6IjNBZmI4aWR5bTY0RVhjYk0xNng5NEE9PSIsInZhbHVlIjoiSmFwdGNqWFVPWElsaTNFeVVWQ2VsTklkSzV3aTRmV2RRUVZnM2s5QldnS1pPSHhPbUFSZS9JdGFnVWlLNFZBMVc2M2s0RXNQdFpBb2FvL1pJTytKTmZFaHJnbDNyTFdNL0JXWDJaUzlkb2xsaDVLaGp6L2ZQMW5DTlNHdTZrc1lHaEgxSFhReUllSG12THJ4WkJDbEtZaXgyRlJUbkpKNGhzUVZlNmhLWVR3SmtzR1NTSmsxcTBXaUl6VWk3WkVFckg0RzNHT3ZkYXhtcU5iSHVMQldUQzROTk0weUR3NGkwTEhucnFOVHBDMGw0cHdvbFpSZHp6cVNPeldqbFo0aWlFaE44UGNWOFduVjkwZ1RkU3ZHVUJQMG5RcjBVWTdkZmppbjdtdUdOTEZQaVk4NW02TmdscUk4UEVXaVZoajNHQVNLYk5HRE84S290eGpobEcxYmtRZmlDVS9ndEc4YndJdnVGSTlxNEduRUEyTytaUUhjYWpGZWJoRWkxLzBPTnZsanZhUjNCSXVLU3d6WUN2ZEdvV2FkM1FNU1VxVzFDcHlIeGFYc2FiaWVjY2UyRm9YV2pVK3RLVVhzc0FnQUdSbEUwWHVOYzREeUZBYVh5cWxNMi9tdzFncHllN0k4OU1vM1FlR0ZXbHBndEZIVDBZN0c3TUpwMGJZS3FyUFFUelZ3TVpuV1pDRW16Z3Jlc2ozQnIrRiszWlNtdlpMN05RbG9yck12SW1TUkIrUjhkL0pmdmJLRzJsZDBmRnJ4T1RxaVZtQnQ5djdISHlsZVdabW82dUtOQnFFSjlLTnBOQXllNlJUT0JkcDlCWmR5b1BKWW5TNTM1a2ZjZjZEZW1IMWxhbnZsTnJ4Yk5ObzJFdlAyd0piQm9uRzNWeWR3eGpMckVkZFp4SEZPM0ZXWE5EdTA3TFVuMy8zM2xyTW9Wci9PRU1LbitWNEdjUmR4TUtYTnFrTU1MRWZCRSsyV1lwbTNXbFBCZWUxQWQ0R2poVEt3MTdkTXJoZHRZQ00zamtwZmpab1dqOFFrb3lDWUdaMlhyekxYcUtldDY2eVUzRjlvV25udWs0MXk4M2ZaYXM3NC9lK2EwaENkcmJJRyIsIm1hYyI6ImUzNDA0OGZiZGRlMDFiYzUwOTg2OWQwYTgyOTU5Njk1ZThkYzU2ZGEzMzc1NjNlNWM0Y2EzNTdiZjRhYWUxMjAiLCJ0YWciOiIifQ%3D%3D; expires=Fri, 08 Mar 2024 11:41:28 GMT; Max-Age=7200; path=/; domain=.127.0.0.1; httponly; samesite=lax"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Unauthenticated.\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "users",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{auth-token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{web-url}}/api/users",
+							"host": [
+								"{{web-url}}"
+							],
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "/api/users",
+									"path": [
+										"api",
+										"users"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 09:41:44 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 09:41:44 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "tdtrec_session=bibON0MyBpIw4X1MbzfvOidhr7dRzzTXzynqyiJR; expires=Fri, 08 Mar 2024 11:41:44 GMT; Max-Age=7200; path=/; domain=.127.0.0.1; httponly; samesite=lax"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"data\": [\n        {\n            \"name\": \"Admin Admin\",\n            \"email\": \"admin123@email.com\",\n            \"email_verified_at\": null,\n            \"created_at\": \"2024-03-08T09:39:56.000000Z\",\n            \"updated_at\": \"2024-03-08T09:39:56.000000Z\",\n            \"type\": \"Admin\"\n        },\n        {\n            \"name\": \"Mr. Wilfred Beatty\",\n            \"email\": \"nelle60@example.com\",\n            \"email_verified_at\": \"2024-03-08T09:39:56.000000Z\",\n            \"created_at\": \"2024-03-08T09:39:56.000000Z\",\n            \"updated_at\": \"2024-03-08T09:39:56.000000Z\",\n            \"type\": \"Admin\"\n        },\n        {\n            \"name\": \"Ms. Ivory Senger\",\n            \"email\": \"hobart40@example.com\",\n            \"email_verified_at\": \"2024-03-08T09:39:56.000000Z\",\n            \"created_at\": \"2024-03-08T09:39:56.000000Z\",\n            \"updated_at\": \"2024-03-08T09:39:56.000000Z\",\n            \"type\": \"Admin\"\n        },\n        {\n            \"name\": \"Enrique Cummerata\",\n            \"email\": \"qsmitham@example.com\",\n            \"email_verified_at\": \"2024-03-08T09:39:57.000000Z\",\n            \"created_at\": \"2024-03-08T09:39:57.000000Z\",\n            \"updated_at\": \"2024-03-08T09:39:57.000000Z\",\n            \"type\": \"User\"\n        },\n        {\n            \"name\": \"Hillard Schiller\",\n            \"email\": \"hane.mertie@example.com\",\n            \"email_verified_at\": \"2024-03-08T09:39:57.000000Z\",\n            \"created_at\": \"2024-03-08T09:39:57.000000Z\",\n            \"updated_at\": \"2024-03-08T09:39:57.000000Z\",\n            \"type\": \"User\"\n        },\n        {\n            \"name\": \"bigoof\",\n            \"email\": \"bigoof@email.com\",\n            \"email_verified_at\": null,\n            \"created_at\": \"2024-03-08T09:40:32.000000Z\",\n            \"updated_at\": \"2024-03-08T09:40:32.000000Z\",\n            \"type\": \"Admin\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "failed user unauthorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{web-url}}/api/users",
+									"host": [
+										"{{web-url}}"
+									],
+									"path": [
+										"api",
+										"users"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 09:46:26 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 09:46:26 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "tdtrec_session=XmsCB1IivVE81MQtE8AvPdOGCatHzuinaj7kWuq7; expires=Fri, 08 Mar 2024 11:46:26 GMT; Max-Age=7200; path=/; domain=.127.0.0.1; httponly; samesite=lax"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Unauthorized\"\n}"
+						},
+						{
+							"name": "unauthenticated",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{web-url}}/api/users",
+									"host": [
+										"{{web-url}}"
+									],
+									"path": [
+										"api",
+										"users"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 13 Mar 2024 10:40:07 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 13 Mar 2024 10:40:07 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "tdtrec_session=AKwJnp9pbwKvxWdqg3Xpp9Poptiny7jorwUTzcT6; expires=Wed, 13 Mar 2024 12:40:07 GMT; Max-Age=7200; path=/; domain=.127.0.0.1; httponly; samesite=lax"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Unauthenticated.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "create",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{auth-token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"bigoof\",\r\n    \"email\": \"bigoofaa@email.com\",\r\n    \"password\": \"bigoof123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{web-url}}/api/user/create",
+							"host": [
+								"{{web-url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"bigoof\",\r\n    \"email\": \"bigoofaa@email.com\",\r\n    \"password\": \"bigoof123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "/api/user/create",
+									"path": [
+										"api",
+										"user",
+										"create"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 09:41:54 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 09:41:54 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "57"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "tdtrec_session=bibON0MyBpIw4X1MbzfvOidhr7dRzzTXzynqyiJR; expires=Fri, 08 Mar 2024 11:41:54 GMT; Max-Age=7200; path=/; domain=.127.0.0.1; httponly; samesite=lax"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"User created successfully\"\n}"
+						},
+						{
+							"name": "failed user unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"bigoof\",\r\n    \"email\": \"bigoofaa@email.com\",\r\n    \"password\": \"bigoof123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{web-url}}/api/user/create",
+									"host": [
+										"{{web-url}}"
+									],
+									"path": [
+										"api",
+										"user",
+										"create"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 09:46:41 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 09:46:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "57"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "tdtrec_session=XmsCB1IivVE81MQtE8AvPdOGCatHzuinaj7kWuq7; expires=Fri, 08 Mar 2024 11:46:41 GMT; Max-Age=7200; path=/; domain=.127.0.0.1; httponly; samesite=lax"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Unauthorized\"\n}"
+						},
+						{
+							"name": "unauthenticated",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"bigoof\",\r\n    \"email\": \"bigoofaa@email.com\",\r\n    \"password\": \"bigoof123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{web-url}}/api/user/create",
+									"host": [
+										"{{web-url}}"
+									],
+									"path": [
+										"api",
+										"user",
+										"create"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 13 Mar 2024 10:40:25 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 13 Mar 2024 10:40:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "tdtrec_session=AKwJnp9pbwKvxWdqg3Xpp9Poptiny7jorwUTzcT6; expires=Wed, 13 Mar 2024 12:40:25 GMT; Max-Age=7200; path=/; domain=.127.0.0.1; httponly; samesite=lax"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Unauthenticated.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "update",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{auth-token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\": \"9b83800e-d5d7-49d5-baaf-6c4b5d19fddd\",\r\n    \"name\": \"bigoofie\",\r\n    \"email\": \"bigooaf@email.com\",\r\n    \"password\": \"bigoof123a\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{web-url}}/api/user/update",
+							"host": [
+								"{{web-url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"update"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user_id\": \"9b83800e-d5d7-49d5-baaf-6c4b5d19fddd\",\r\n    \"name\": \"bigoofie\",\r\n    \"email\": \"bigooaf@email.com\",\r\n    \"password\": \"bigoof123a\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "/api/user/update",
+									"path": [
+										"api",
+										"user",
+										"update"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 09:42:19 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 09:42:19 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "56"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "tdtrec_session=bibON0MyBpIw4X1MbzfvOidhr7dRzzTXzynqyiJR; expires=Fri, 08 Mar 2024 11:42:19 GMT; Max-Age=7200; path=/; domain=.127.0.0.1; httponly; samesite=lax"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"account updated\"\n}"
+						},
+						{
+							"name": "failed user unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user_id\": \"9b83800e-d5d7-49d5-baaf-6c4b5d19fddd\",\r\n    \"name\": \"bigoofie\",\r\n    \"email\": \"bigooaf@email.com\",\r\n    \"password\": \"bigoof123a\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{web-url}}/api/user/update",
+									"host": [
+										"{{web-url}}"
+									],
+									"path": [
+										"api",
+										"user",
+										"update"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 09:47:00 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 09:47:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "55"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "tdtrec_session=XmsCB1IivVE81MQtE8AvPdOGCatHzuinaj7kWuq7; expires=Fri, 08 Mar 2024 11:47:00 GMT; Max-Age=7200; path=/; domain=.127.0.0.1; httponly; samesite=lax"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Unauthorized\"\n}"
+						},
+						{
+							"name": "unauthenticated",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user_id\": \"9b83800e-d5d7-49d5-baaf-6c4b5d19fddd\",\r\n    \"name\": \"bigoofie\",\r\n    \"email\": \"bigooaf@email.com\",\r\n    \"password\": \"bigoof123a\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{web-url}}/api/user/update",
+									"host": [
+										"{{web-url}}"
+									],
+									"path": [
+										"api",
+										"user",
+										"update"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 13 Mar 2024 10:40:33 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 13 Mar 2024 10:40:33 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "tdtrec_session=AKwJnp9pbwKvxWdqg3Xpp9Poptiny7jorwUTzcT6; expires=Wed, 13 Mar 2024 12:40:33 GMT; Max-Age=7200; path=/; domain=.127.0.0.1; httponly; samesite=lax"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Unauthenticated.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "delete",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{auth-token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\": \"9b83800e-d5d7-49d5-baaf-6c4b5d19fddd\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{web-url}}/api/user/delete",
+							"host": [
+								"{{web-url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"delete"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user_id\": \"9b83800e-d5d7-49d5-baaf-6c4b5d19fddd\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "/api/user/delete",
+									"path": [
+										"api",
+										"user",
+										"delete"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 09:42:33 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 09:42:33 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "55"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "tdtrec_session=bibON0MyBpIw4X1MbzfvOidhr7dRzzTXzynqyiJR; expires=Fri, 08 Mar 2024 11:42:33 GMT; Max-Age=7200; path=/; domain=.127.0.0.1; httponly; samesite=lax"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"deleted successfully\"\n}"
+						},
+						{
+							"name": "failed user unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user_id\": \"9b83800e-d5d7-49d5-baaf-6c4b5d19fddd\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{web-url}}/api/user/delete",
+									"host": [
+										"{{web-url}}"
+									],
+									"path": [
+										"api",
+										"user",
+										"delete"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 09:47:07 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 09:47:07 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "tdtrec_session=XmsCB1IivVE81MQtE8AvPdOGCatHzuinaj7kWuq7; expires=Fri, 08 Mar 2024 11:47:07 GMT; Max-Age=7200; path=/; domain=.127.0.0.1; httponly; samesite=lax"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Unauthorized\"\n}"
+						},
+						{
+							"name": "unauthenticated",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user_id\": \"9b83800e-d5d7-49d5-baaf-6c4b5d19fddd\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{web-url}}/api/user/delete",
+									"host": [
+										"{{web-url}}"
+									],
+									"path": [
+										"api",
+										"user",
+										"delete"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 13 Mar 2024 10:40:39 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 13 Mar 2024 10:40:39 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "tdtrec_session=AKwJnp9pbwKvxWdqg3Xpp9Poptiny7jorwUTzcT6; expires=Wed, 13 Mar 2024 12:40:39 GMT; Max-Age=7200; path=/; domain=.127.0.0.1; httponly; samesite=lax"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Unauthenticated.\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Article",
+			"item": [
+				{
+					"name": "show",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{web-url}}/api/articles",
+							"host": [
+								"{{web-url}}"
+							],
+							"path": [
+								"api",
+								"articles"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "/api/articles",
+									"path": [
+										"api",
+										"articles"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 13 Mar 2024 10:30:32 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 13 Mar 2024 10:30:32 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"data\": [\n        {\n            \"article_id\": 1,\n            \"published_at\": \"2024-03-10 13:18:53\",\n            \"article_title\": \"Quae voluptas quia qui quo qui.\",\n            \"article_desc\": \"However, at last the Mouse, sharply and very neatly and simply arranged; the only one way up as the Rabbit, and had no pictures or conversations?' So she sat down and make out what she was going to dive in among the branches, and every now and then; such as, that a moment's pause. The only things in the world! Oh, my dear paws! Oh my dear Dinah! I wonder if I would talk on such a subject! Our family always HATED cats: nasty, low, vulgar things! Don't let me hear the very tones of her voice, and see that queer little toss of her own child-life, and the Hatter hurriedly left the court, by the prisoner to--to somebody.' 'It must be getting somewhere near the centre of the evening, beautiful Soup! 'Beautiful Soup! Who cares for fish, Game, or any other dish? Who would not open any of them. However, on the bank, with her head!' Those whom she sentenced were taken into custody by the way, and nothing seems to suit them!' 'I haven't the least idea what a delightful thing a bit!' said the Caterpillar. Here was another long passage, and the Queen's voice in the sea!' cried the Mock Turtle. 'No, no! The adventures first,' said the Gryphon added 'Come, let's try the effect: the next verse,' the Gryphon replied very gravely. 'What else have you executed on the stairs. Alice knew it was addressed to the door, and knocked. 'There's no sort of mixed flavour of cherry-tart, custard, pine-apple, roast turkey, toffee, and hot buttered toast,) she very seldom followed it), and handed back to my right size for ten minutes together!' 'Can't remember WHAT things?' said the Hatter. He had been jumping about like that!' 'I couldn't afford to learn it.' said the Queen, but she knew the meaning.\",\n            \"article_img\": \"https://via.placeholder.com/640x480.png/00ffee?text=quidem\",\n            \"author_id\": \"9b8d9ffa-f348-4aec-994b-72c8b772be54\",\n            \"category_id\": 1\n        },\n        {\n            \"article_id\": 2,\n            \"published_at\": \"2024-03-10 14:47:08\",\n            \"article_title\": \"Ut nesciunt voluptatem quas fuga et ut non.\",\n            \"article_desc\": \"I don't like them raw.' 'Well, be off, and she set off at once, in a low voice. 'Not at all,' said Alice: 'besides, that's not a moment to be a grin, and she trembled till she shook the house, and have next to her. The Cat seemed to be rude, so she went on, 'I must be kind to them,' thought Alice, 'it'll never do to hold it. As soon as it went. So she was a little bird as soon as there was not a VERY good opportunity for making her escape; so she went in without knocking, and hurried upstairs, in great fear lest she should meet the real Mary Ann, what ARE you doing out here? Run home this moment, I tell you, you coward!' and at once took up the little door was shut again, and Alice could speak again. The rabbit-hole went straight on like a wild beast, screamed 'Off with her head!' about once in her head, and she went on. 'Or would you tell me,' said Alice, rather doubtfully, as she had never had fits, my dear, I think?' 'I had NOT!' cried the Gryphon, the squeaking of the fact. 'I keep them to be seen--everything seemed to be sure; but I can't see you?' She was a paper label, with the Queen,' and she very seldom followed it), and handed them round as prizes. There was a little timidly: 'but it's no use in talking to herself, as she could, 'If you please, sir--' The Rabbit started violently, dropped the white kid gloves: she took courage, and went back for a minute or two to think about stopping herself before she found that her shoulders were nowhere to be beheaded!' said Alice, who was beginning to grow up again! Let me see: that would be only rustling in the wind, and the game was going on, as she could, and waited to see what would be worth the trouble of getting her.\",\n            \"article_img\": \"https://via.placeholder.com/640x480.png/002266?text=molestiae\",\n            \"author_id\": \"9b8d9ff9-0a55-4353-b58b-4567ea168771\",\n            \"category_id\": 1\n        },\n        {\n            \"article_id\": 3,\n            \"published_at\": \"2024-03-10 19:14:33\",\n            \"article_title\": \"Dolore ipsa deserunt fugit dolores officia.\",\n            \"article_desc\": \"King added in an offended tone, and she was always ready to talk about her other little children, and make one quite giddy.' 'All right,' said the cook. 'Treacle,' said the Hatter, 'or you'll be asleep again before it's done.' 'Once upon a little wider. 'Come, it's pleased so far,' said the Hatter, it woke up again as she spoke; 'either you or your head must be removed,' said the Cat. 'I don't see,' said the Rabbit was no more to come, so she went nearer to make herself useful, and looking anxiously about as much as she spoke. Alice did not see anything that looked like the look of the teacups as the other.' As soon as look at the thought that she wanted to send the hedgehog a blow with its head, it WOULD twist itself round and round goes the clock in a minute, while Alice thought this a very short time the Mouse replied rather impatiently: 'any shrimp could have told you butter wouldn't suit the works!' he added looking angrily at the mushroom for a conversation. Alice felt that there was nothing else to say whether the pleasure of making a daisy-chain would be quite absurd for her neck would bend about easily in any direction, like a frog; and both the hedgehogs were out of their hearing her; and when Alice had been all the while, till at last she spread out her hand, watching the setting sun, and thinking of little cartwheels, and the Queen's shrill cries to the table, but it was an old woman--but then--always to have finished,' said the Duchess. 'Everything's got a moral, if only you can have no idea what a dear quiet thing,' Alice went on, 'What's your name, child?' 'My name is Alice, so please your Majesty?' he asked. 'Begin at the bottom of a procession,' thought.\",\n            \"article_img\": \"https://via.placeholder.com/640x480.png/007733?text=omnis\",\n            \"author_id\": \"9b8d9ffa-f348-4aec-994b-72c8b772be54\",\n            \"category_id\": 2\n        },\n        {\n            \"article_id\": 4,\n            \"published_at\": \"2024-03-10 12:10:25\",\n            \"article_title\": \"Voluptas magni asperiores aut sit aut.\",\n            \"article_desc\": \"Duck: 'it's generally a frog or a watch to take the hint; but the great question is, what did the archbishop find?' The Mouse looked at the Hatter, 'or you'll be asleep again before it's done.' 'Once upon a little now and then, if I must, I must,' the King was the White Rabbit interrupted: 'UNimportant, your Majesty means, of course,' said the Mouse heard this, it turned a corner, 'Oh my ears and whiskers, how late it's getting!' She was looking for eggs, as it went, as if it began ordering people about like that!' said Alice sadly. 'Hand it over afterwards, it occurred to her very earnestly, 'Now, Dinah, tell me who YOU are, first.' 'Why?' said the Caterpillar, and the words all coming different, and then nodded. 'It's no use in knocking,' said the one who got any advantage from the sky! Ugh, Serpent!' 'But I'm NOT a serpent, I tell you, you coward!' and at once took up the fan and two or three of her voice. Nobody moved. 'Who cares for fish, Game, or any other dish? Who would not join the dance. '\\\"What matters it how far we go?\\\" his scaly friend replied. \\\"There is another shore, you know, upon the other guinea-pig cheered, and was in livery: otherwise, judging by his garden, and I could let you out, you know.' 'And what an ignorant little girl or a worm. The question is, what did the archbishop find?' The Mouse did not see anything that looked like the three gardeners, but she gained courage as she could see it trying in a moment: she looked up eagerly, half hoping she might as well as if his heart would break. She pitied him deeply. 'What is it?' he said, turning to Alice, she went on planning to herself what such an extraordinary ways of living would be four.\",\n            \"article_img\": \"https://via.placeholder.com/640x480.png/00ffdd?text=exercitationem\",\n            \"author_id\": \"9b8d9ff9-0a55-4353-b58b-4567ea168771\",\n            \"category_id\": 2\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "read",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{web-url}}/api/article/2",
+							"host": [
+								"{{web-url}}"
+							],
+							"path": [
+								"api",
+								"article",
+								"2"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "/api/article/2",
+									"path": [
+										"api",
+										"article",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 13 Mar 2024 10:31:05 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 13 Mar 2024 10:31:05 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "57"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"data\": {\n        \"article_id\": 2,\n        \"published_at\": \"2024-03-10 14:47:08\",\n        \"article_title\": \"Ut nesciunt voluptatem quas fuga et ut non.\",\n        \"article_desc\": \"I don't like them raw.' 'Well, be off, and she set off at once, in a low voice. 'Not at all,' said Alice: 'besides, that's not a moment to be a grin, and she trembled till she shook the house, and have next to her. The Cat seemed to be rude, so she went on, 'I must be kind to them,' thought Alice, 'it'll never do to hold it. As soon as it went. So she was a little bird as soon as there was not a VERY good opportunity for making her escape; so she went in without knocking, and hurried upstairs, in great fear lest she should meet the real Mary Ann, what ARE you doing out here? Run home this moment, I tell you, you coward!' and at once took up the little door was shut again, and Alice could speak again. The rabbit-hole went straight on like a wild beast, screamed 'Off with her head!' about once in her head, and she went on. 'Or would you tell me,' said Alice, rather doubtfully, as she had never had fits, my dear, I think?' 'I had NOT!' cried the Gryphon, the squeaking of the fact. 'I keep them to be seen--everything seemed to be sure; but I can't see you?' She was a paper label, with the Queen,' and she very seldom followed it), and handed them round as prizes. There was a little timidly: 'but it's no use in talking to herself, as she could, 'If you please, sir--' The Rabbit started violently, dropped the white kid gloves: she took courage, and went back for a minute or two to think about stopping herself before she found that her shoulders were nowhere to be beheaded!' said Alice, who was beginning to grow up again! Let me see: that would be only rustling in the wind, and the game was going on, as she could, and waited to see what would be worth the trouble of getting her.\",\n        \"article_img\": \"https://via.placeholder.com/640x480.png/002266?text=molestiae\",\n        \"author_id\": \"9b8d9ff9-0a55-4353-b58b-4567ea168771\",\n        \"category_id\": 1\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "create",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{auth-token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"article_title\": \"an article\",\r\n    \"article_desc\": \"an article desc\",\r\n    \"article_img\": \"imgurl\",\r\n    \"category\": \"Sport\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{web-url}}/api/article/create",
+							"host": [
+								"{{web-url}}"
+							],
+							"path": [
+								"api",
+								"article",
+								"create"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"article_title\": \"an article\",\r\n    \"article_desc\": \"an article desc\",\r\n    \"article_img\": \"imgurl\",\r\n    \"category\": \"Sport\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "/api/article/create",
+									"path": [
+										"api",
+										"article",
+										"create"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 09:43:01 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 09:43:01 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "57"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "tdtrec_session=bibON0MyBpIw4X1MbzfvOidhr7dRzzTXzynqyiJR; expires=Fri, 08 Mar 2024 11:43:01 GMT; Max-Age=7200; path=/; domain=.127.0.0.1; httponly; samesite=lax"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"Article created successfully\"\n}"
+						},
+						{
+							"name": "failed user unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"article_title\": \"an article\",\r\n    \"article_desc\": \"an article desc\",\r\n    \"article_img\": \"imgurl\",\r\n    \"category\": \"Sport\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{web-url}}/api/article/create",
+									"host": [
+										"{{web-url}}"
+									],
+									"path": [
+										"api",
+										"article",
+										"create"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 09:47:18 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 09:47:18 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "tdtrec_session=XmsCB1IivVE81MQtE8AvPdOGCatHzuinaj7kWuq7; expires=Fri, 08 Mar 2024 11:47:18 GMT; Max-Age=7200; path=/; domain=.127.0.0.1; httponly; samesite=lax"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Unauthorized\"\n}"
+						},
+						{
+							"name": "unauthenticated",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"article_title\": \"an article\",\r\n    \"article_desc\": \"an article desc\",\r\n    \"article_img\": \"imgurl\",\r\n    \"category\": \"Sport\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{web-url}}/api/article/create",
+									"host": [
+										"{{web-url}}"
+									],
+									"path": [
+										"api",
+										"article",
+										"create"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 13 Mar 2024 10:40:57 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 13 Mar 2024 10:40:57 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "tdtrec_session=AKwJnp9pbwKvxWdqg3Xpp9Poptiny7jorwUTzcT6; expires=Wed, 13 Mar 2024 12:40:57 GMT; Max-Age=7200; path=/; domain=.127.0.0.1; httponly; samesite=lax"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Unauthenticated.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "update",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{auth-token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"article_id\": 1,\r\n    \"article_title\": \"an article\",\r\n    \"article_desc\": \"an article desc\",\r\n    \"article_img\": \"imgurl\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{web-url}}/api/article/update",
+							"host": [
+								"{{web-url}}"
+							],
+							"path": [
+								"api",
+								"article",
+								"update"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"article_id\": 1,\r\n    \"article_title\": \"an article\",\r\n    \"article_desc\": \"an article desc\",\r\n    \"article_img\": \"imgurl\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "/api/article/update",
+									"path": [
+										"api",
+										"article",
+										"update"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 09:43:10 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 09:43:10 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "56"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "tdtrec_session=bibON0MyBpIw4X1MbzfvOidhr7dRzzTXzynqyiJR; expires=Fri, 08 Mar 2024 11:43:10 GMT; Max-Age=7200; path=/; domain=.127.0.0.1; httponly; samesite=lax"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"article updated\"\n}"
+						},
+						{
+							"name": "failed user unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"article_id\": 1,\r\n    \"article_title\": \"an article\",\r\n    \"article_desc\": \"an article desc\",\r\n    \"article_img\": \"imgurl\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{web-url}}/api/article/update",
+									"host": [
+										"{{web-url}}"
+									],
+									"path": [
+										"api",
+										"article",
+										"update"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 09:47:25 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 09:47:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "57"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "tdtrec_session=XmsCB1IivVE81MQtE8AvPdOGCatHzuinaj7kWuq7; expires=Fri, 08 Mar 2024 11:47:25 GMT; Max-Age=7200; path=/; domain=.127.0.0.1; httponly; samesite=lax"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Unauthorized\"\n}"
+						},
+						{
+							"name": "unauthenticated",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"article_id\": 1,\r\n    \"article_title\": \"an article\",\r\n    \"article_desc\": \"an article desc\",\r\n    \"article_img\": \"imgurl\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{web-url}}/api/article/update",
+									"host": [
+										"{{web-url}}"
+									],
+									"path": [
+										"api",
+										"article",
+										"update"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 13 Mar 2024 10:41:04 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 13 Mar 2024 10:41:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "tdtrec_session=AKwJnp9pbwKvxWdqg3Xpp9Poptiny7jorwUTzcT6; expires=Wed, 13 Mar 2024 12:41:04 GMT; Max-Age=7200; path=/; domain=.127.0.0.1; httponly; samesite=lax"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Unauthenticated.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "delete",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{auth-token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"article_id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{web-url}}/api/article/delete",
+							"host": [
+								"{{web-url}}"
+							],
+							"path": [
+								"api",
+								"article",
+								"delete"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"article_id\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{web-url}}/api/article/delete",
+									"host": [
+										"{{web-url}}"
+									],
+									"path": [
+										"api",
+										"article",
+										"delete"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 09:43:28 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 09:43:28 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "55"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "tdtrec_session=bibON0MyBpIw4X1MbzfvOidhr7dRzzTXzynqyiJR; expires=Fri, 08 Mar 2024 11:43:28 GMT; Max-Age=7200; path=/; domain=.127.0.0.1; httponly; samesite=lax"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"deleted successfully\"\n}"
+						},
+						{
+							"name": "failed user unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"article_id\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{web-url}}/api/article/delete",
+									"host": [
+										"{{web-url}}"
+									],
+									"path": [
+										"api",
+										"article",
+										"delete"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 09:47:32 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 09:47:32 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "56"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "tdtrec_session=XmsCB1IivVE81MQtE8AvPdOGCatHzuinaj7kWuq7; expires=Fri, 08 Mar 2024 11:47:32 GMT; Max-Age=7200; path=/; domain=.127.0.0.1; httponly; samesite=lax"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Unauthorized\"\n}"
+						},
+						{
+							"name": "unauthenticated",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"article_id\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{web-url}}/api/article/delete",
+									"host": [
+										"{{web-url}}"
+									],
+									"path": [
+										"api",
+										"article",
+										"delete"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 13 Mar 2024 10:41:15 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 13 Mar 2024 10:41:15 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "tdtrec_session=AKwJnp9pbwKvxWdqg3Xpp9Poptiny7jorwUTzcT6; expires=Wed, 13 Mar 2024 12:41:15 GMT; Max-Age=7200; path=/; domain=.127.0.0.1; httponly; samesite=lax"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Unauthenticated.\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Article Categories",
+			"item": [
+				{
+					"name": "read",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{web-url}}/api/articlecats",
+							"host": [
+								"{{web-url}}"
+							],
+							"path": [
+								"api",
+								"articlecats"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{web-url}}/api/articlecats",
+									"host": [
+										"{{web-url}}"
+									],
+									"path": [
+										"api",
+										"articlecats"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 13 Mar 2024 10:32:09 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 13 Mar 2024 10:32:09 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"data\": [\n        {\n            \"article_category_id\": 1,\n            \"name\": \"Sport\"\n        },\n        {\n            \"article_category_id\": 2,\n            \"name\": \"Health\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "create",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{auth-token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Medic\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{web-url}}/api/articlecats/create",
+							"host": [
+								"{{web-url}}"
+							],
+							"path": [
+								"api",
+								"articlecats",
+								"create"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Medic\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{web-url}}/api/articlecats/create",
+									"host": [
+										"{{web-url}}"
+									],
+									"path": [
+										"api",
+										"articlecats",
+										"create"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 09:43:50 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 09:43:50 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "tdtrec_session=bibON0MyBpIw4X1MbzfvOidhr7dRzzTXzynqyiJR; expires=Fri, 08 Mar 2024 11:43:50 GMT; Max-Age=7200; path=/; domain=.127.0.0.1; httponly; samesite=lax"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"Article Categories created successfully\"\n}"
+						},
+						{
+							"name": "failed user unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Medic\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{web-url}}/api/articlecats/create",
+									"host": [
+										"{{web-url}}"
+									],
+									"path": [
+										"api",
+										"articlecats",
+										"create"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 09:47:42 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 09:47:42 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "55"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "tdtrec_session=XmsCB1IivVE81MQtE8AvPdOGCatHzuinaj7kWuq7; expires=Fri, 08 Mar 2024 11:47:42 GMT; Max-Age=7200; path=/; domain=.127.0.0.1; httponly; samesite=lax"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Unauthorized\"\n}"
+						},
+						{
+							"name": "unauthenticated",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Medic\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{web-url}}/api/articlecats/create",
+									"host": [
+										"{{web-url}}"
+									],
+									"path": [
+										"api",
+										"articlecats",
+										"create"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 13 Mar 2024 10:41:24 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 13 Mar 2024 10:41:24 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "tdtrec_session=AKwJnp9pbwKvxWdqg3Xpp9Poptiny7jorwUTzcT6; expires=Wed, 13 Mar 2024 12:41:24 GMT; Max-Age=7200; path=/; domain=.127.0.0.1; httponly; samesite=lax"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Unauthenticated.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "update",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{auth-token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"article_category_id\": 1,\r\n    \"name\": \"Gaming\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{web-url}}/api/articlecats/update",
+							"host": [
+								"{{web-url}}"
+							],
+							"path": [
+								"api",
+								"articlecats",
+								"update"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"article_category_id\": 1,\r\n    \"name\": \"Gaming\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{web-url}}/api/articlecats/update",
+									"host": [
+										"{{web-url}}"
+									],
+									"path": [
+										"api",
+										"articlecats",
+										"update"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 09:44:01 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 09:44:01 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "tdtrec_session=bibON0MyBpIw4X1MbzfvOidhr7dRzzTXzynqyiJR; expires=Fri, 08 Mar 2024 11:44:01 GMT; Max-Age=7200; path=/; domain=.127.0.0.1; httponly; samesite=lax"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"article updated\"\n}"
+						},
+						{
+							"name": "failed user unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"article_category_id\": 1,\r\n    \"name\": \"Gaming\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{web-url}}/api/articlecats/update",
+									"host": [
+										"{{web-url}}"
+									],
+									"path": [
+										"api",
+										"articlecats",
+										"update"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 09:47:53 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 09:47:53 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "53"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "tdtrec_session=XmsCB1IivVE81MQtE8AvPdOGCatHzuinaj7kWuq7; expires=Fri, 08 Mar 2024 11:47:53 GMT; Max-Age=7200; path=/; domain=.127.0.0.1; httponly; samesite=lax"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Unauthorized\"\n}"
+						},
+						{
+							"name": "unauthenticated",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"article_category_id\": 1,\r\n    \"name\": \"Gaming\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{web-url}}/api/articlecats/update",
+									"host": [
+										"{{web-url}}"
+									],
+									"path": [
+										"api",
+										"articlecats",
+										"update"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 13 Mar 2024 10:41:32 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 13 Mar 2024 10:41:32 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "tdtrec_session=AKwJnp9pbwKvxWdqg3Xpp9Poptiny7jorwUTzcT6; expires=Wed, 13 Mar 2024 12:41:32 GMT; Max-Age=7200; path=/; domain=.127.0.0.1; httponly; samesite=lax"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Unauthenticated.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "delete",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{auth-token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"article_category_id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{web-url}}/api/articlecats/delete",
+							"host": [
+								"{{web-url}}"
+							],
+							"path": [
+								"api",
+								"articlecats",
+								"delete"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"article_category_id\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{web-url}}/api/articlecats/delete",
+									"host": [
+										"{{web-url}}"
+									],
+									"path": [
+										"api",
+										"articlecats",
+										"delete"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 09:44:15 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 09:44:15 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "57"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "tdtrec_session=bibON0MyBpIw4X1MbzfvOidhr7dRzzTXzynqyiJR; expires=Fri, 08 Mar 2024 11:44:15 GMT; Max-Age=7200; path=/; domain=.127.0.0.1; httponly; samesite=lax"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"deleted successfully\"\n}"
+						},
+						{
+							"name": "failed user unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"article_category_id\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{web-url}}/api/articlecats/delete",
+									"host": [
+										"{{web-url}}"
+									],
+									"path": [
+										"api",
+										"articlecats",
+										"delete"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 09:48:03 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 09:48:03 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "52"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "tdtrec_session=XmsCB1IivVE81MQtE8AvPdOGCatHzuinaj7kWuq7; expires=Fri, 08 Mar 2024 11:48:03 GMT; Max-Age=7200; path=/; domain=.127.0.0.1; httponly; samesite=lax"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Unauthorized\"\n}"
+						},
+						{
+							"name": "unauthenticated",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"article_category_id\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{web-url}}/api/articlecats/delete",
+									"host": [
+										"{{web-url}}"
+									],
+									"path": [
+										"api",
+										"articlecats",
+										"delete"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 13 Mar 2024 10:41:45 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 13 Mar 2024 10:41:45 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "tdtrec_session=AKwJnp9pbwKvxWdqg3Xpp9Poptiny7jorwUTzcT6; expires=Wed, 13 Mar 2024 12:41:45 GMT; Max-Age=7200; path=/; domain=.127.0.0.1; httponly; samesite=lax"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Unauthenticated.\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Article Comments",
+			"item": [
+				{
+					"name": "read",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{web-url}}/api/articlecomms/4",
+							"host": [
+								"{{web-url}}"
+							],
+							"path": [
+								"api",
+								"articlecomms",
+								"4"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{web-url}}/api/articlecomms/4",
+									"host": [
+										"{{web-url}}"
+									],
+									"path": [
+										"api",
+										"articlecomms",
+										"4"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 13 Mar 2024 10:32:41 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 13 Mar 2024 10:32:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "57"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"data\": [\n        {\n            \"article_comment_id\": 7,\n            \"published_at\": \"2024-03-10 23:20:24\",\n            \"comment_desc\": \"Hatter hurriedly left the court, without even looking round. 'I'll fetch the executioner ran wildly up and leave the court; but on the top of his great wig.' The judge, by the English, who wanted.\",\n            \"author_id\": \"9b8d9ffa-f348-4aec-994b-72c8b772be54\",\n            \"article_id\": 4\n        },\n        {\n            \"article_comment_id\": 8,\n            \"published_at\": \"2024-03-11 00:05:15\",\n            \"comment_desc\": \"It means much the same thing with you,' said the Hatter. 'Nor I,' said the Queen. First came ten soldiers carrying clubs; these were all crowded together at one corner of it: for she felt sure it.\",\n            \"author_id\": \"9b8d9ff9-0a55-4353-b58b-4567ea168771\",\n            \"article_id\": 4\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "create",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{auth-token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"article_id\": \"4\",\r\n    \"comment_desc\": \"Haha\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{web-url}}/api/articlecomms/create",
+							"host": [
+								"{{web-url}}"
+							],
+							"path": [
+								"api",
+								"articlecomms",
+								"create"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"article_id\": \"4\",\r\n    \"comment_desc\": \"Haha\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{web-url}}/api/articlecomms/create",
+									"host": [
+										"{{web-url}}"
+									],
+									"path": [
+										"api",
+										"articlecomms",
+										"create"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 09:44:32 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 09:44:32 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "55"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "tdtrec_session=bibON0MyBpIw4X1MbzfvOidhr7dRzzTXzynqyiJR; expires=Fri, 08 Mar 2024 11:44:32 GMT; Max-Age=7200; path=/; domain=.127.0.0.1; httponly; samesite=lax"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"Article comment created successfully\"\n}"
+						},
+						{
+							"name": "unauthenticated",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"article_id\": \"4\",\r\n    \"comment_desc\": \"Haha\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{web-url}}/api/articlecomms/create",
+									"host": [
+										"{{web-url}}"
+									],
+									"path": [
+										"api",
+										"articlecomms",
+										"create"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 13 Mar 2024 10:42:19 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 13 Mar 2024 10:42:19 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "tdtrec_session=AKwJnp9pbwKvxWdqg3Xpp9Poptiny7jorwUTzcT6; expires=Wed, 13 Mar 2024 12:42:19 GMT; Max-Age=7200; path=/; domain=.127.0.0.1; httponly; samesite=lax"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Unauthenticated.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "update",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{auth-token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"article_comment_id\": 9,\r\n    \"comment_desc\": \"Hehe\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{web-url}}/api/articlecomms/update",
+							"host": [
+								"{{web-url}}"
+							],
+							"path": [
+								"api",
+								"articlecomms",
+								"update"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"article_comment_id\": 9,\r\n    \"comment_desc\": \"Hehe\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{web-url}}/api/articlecomms/update",
+									"host": [
+										"{{web-url}}"
+									],
+									"path": [
+										"api",
+										"articlecomms",
+										"update"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 09:44:41 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 09:44:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "54"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "tdtrec_session=bibON0MyBpIw4X1MbzfvOidhr7dRzzTXzynqyiJR; expires=Fri, 08 Mar 2024 11:44:41 GMT; Max-Age=7200; path=/; domain=.127.0.0.1; httponly; samesite=lax"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"article comment updated\"\n}"
+						},
+						{
+							"name": "unauthenticated",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"article_comment_id\": 9,\r\n    \"comment_desc\": \"Hehe\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{web-url}}/api/articlecomms/update",
+									"host": [
+										"{{web-url}}"
+									],
+									"path": [
+										"api",
+										"articlecomms",
+										"update"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 13 Mar 2024 10:42:27 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 13 Mar 2024 10:42:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "tdtrec_session=AKwJnp9pbwKvxWdqg3Xpp9Poptiny7jorwUTzcT6; expires=Wed, 13 Mar 2024 12:42:27 GMT; Max-Age=7200; path=/; domain=.127.0.0.1; httponly; samesite=lax"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Unauthenticated.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "delete",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{auth-token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"article_comment_id\": 9\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{web-url}}/api/articlecomms/delete",
+							"host": [
+								"{{web-url}}"
+							],
+							"path": [
+								"api",
+								"articlecomms",
+								"delete"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"article_comment_id\": 9\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{web-url}}/api/articlecomms/delete",
+									"host": [
+										"{{web-url}}"
+									],
+									"path": [
+										"api",
+										"articlecomms",
+										"delete"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 09:44:51 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 09:44:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "tdtrec_session=bibON0MyBpIw4X1MbzfvOidhr7dRzzTXzynqyiJR; expires=Fri, 08 Mar 2024 11:44:51 GMT; Max-Age=7200; path=/; domain=.127.0.0.1; httponly; samesite=lax"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"deleted successfully\"\n}"
+						},
+						{
+							"name": "unauthenticated",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"article_comment_id\": 9\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{web-url}}/api/articlecomms/delete",
+									"host": [
+										"{{web-url}}"
+									],
+									"path": [
+										"api",
+										"articlecomms",
+										"delete"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 13 Mar 2024 10:42:35 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 13 Mar 2024 10:42:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "tdtrec_session=AKwJnp9pbwKvxWdqg3Xpp9Poptiny7jorwUTzcT6; expires=Wed, 13 Mar 2024 12:42:35 GMT; Max-Age=7200; path=/; domain=.127.0.0.1; httponly; samesite=lax"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Unauthenticated.\"\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "web-url",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "origin",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "auth-token",
+			"value": ""
+		}
+	]
+}
